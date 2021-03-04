@@ -1,16 +1,20 @@
 // constructor function for Book object
 
-function Book(title, author, isbn, pages, status) {
-  this.title = title;
-  this.author = author;
-  this.isbn = isbn;
-  this.pages = pages;
-  this.status = status;
+// function Book(title, author, isbn, pages, status) {
+//   this.title = title;
+//   this.author = author;
+//   this.isbn = isbn;
+//   this.pages = pages;
+//   this.status = status;
 
-  this.info = function () {
-    '#{this.title} by #{this.author}, #{this.pages} pages, #{this.status}.';
-  };
-}
+//   this.info = function () {
+//     '#{this.title} by #{this.author}, #{this.pages} pages, #{this.status}.';
+//   };
+// }
+
+const createBook = (title, author, isbn, pages, status) => {
+  return { title, author, isbn, pages, status };
+};
 
 // store class
 class Store {
@@ -135,7 +139,8 @@ document.querySelector('#bookform').addEventListener('submit', (e) => {
 
     setTimeout(() => document.querySelector('.alert').remove(), 3000);
   } else {
-    const book = new Book(title, author, isbn, pages, status);
+    // const book = new Book(title, author, isbn, pages, status);
+    const book = createBook(title, author, isbn, pages, status);
     Store.addBookToLibrary(book);
     appendBook(book, '#books');
   }
